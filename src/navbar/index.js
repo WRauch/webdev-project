@@ -14,10 +14,18 @@ const NavigationSidebar = (
                     ${active === 'search'?'active':''}`}>
         Search
      </Link>
-     <Link to="/profile" className={`list-group-item
-                    ${active === 'profile'?'active':''}`}> 
-     Profile
-     </Link>
+    {
+    true ? <Link to="/profile" className={`list-group-item
+                      ${active === 'profile'?'active':''}`}> 
+                           Profile
+     </Link> :
+     <Link to="/login" className={`list-group-item
+     ${active === 'login'?'active':''}`}> 
+          Profile
+      </Link>
+    }
+
+
    </div>
  );
 };

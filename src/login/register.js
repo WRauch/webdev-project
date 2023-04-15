@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import NavigationSidebar from "../navbar";
 import { Link } from "react-router-dom";
 
-function Login () {
+function Register () {
     return(
         <div className="m-2">
 
@@ -17,19 +17,23 @@ function Login () {
                 </input>
                 <input  className="form-control mt-2" placeholder="Password" name="password">
                 </input>
-
-                <div className="mt-2">
-                    Or Register Here 
-                    <Link to="/register" className="btn bg-primary float-end">Register</Link>
-
+                <div class="input-group mt-2">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Role</label>
+                </div>
+                <select class="form-select" id="inputGroupSelect01">
+                    <option selected>User</option>
+                    <option value="1">Admin</option>
+                </select>
                 </div>
 
             </div>
             <div className="col-1">
-            <button className="btn bg-danger">
-                    Login
-                </button>
+            <Link className="btn bg-danger" to={'/profile'}>
+                    Register
+                </Link>
             </div>
+
 
         </div>
         </div>
@@ -37,4 +41,4 @@ function Login () {
     )
 
 }
-export default Login;
+export default Register;
