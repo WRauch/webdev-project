@@ -30,7 +30,7 @@ function App() {
                  element={<Login/>}/>   
           <Route path='register'
                  element={<Register/>}/>
-          <Route path='details/:team'
+          <Route path='details/:teamId'
                  element={<Details/>}/>   
           <Route
                 path="search/:searchTerm"

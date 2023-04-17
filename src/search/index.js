@@ -22,7 +22,7 @@ function Search () {
             setSearch(searchTerm);
             searchNHL();
         }
-    }, [])
+    }, [searchTerm])
 
     return(
         <div className="m-2">
@@ -36,9 +36,11 @@ function Search () {
                 <h2>
                     Search For Teams
                 </h2>
-                <button className="btn bg-danger" onClick={searchNHL}>Search</button>
 
-                <input className="form-control" placeholder="Search" onChange={(x) => setSearch(x.target.value)}/>
+                <div className="input-group">
+                    <input className="form-control" placeholder="Search" onChange={(x) => setSearch(x.target.value)}/>
+                    <button className="btn bg-danger input-group-append" onClick={searchNHL}>Search</button>
+                </div>
                 
                 <ul className="list-group mt-2">
                 {results.map((result) => {

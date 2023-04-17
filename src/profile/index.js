@@ -33,7 +33,7 @@ function Profile() {
   return (
     <div className="row">
     <div className="col-2">
-    <NavigationSidebar active="login"/>
+    <NavigationSidebar active="profile"/>
     </div>
     <div className="col-10">
       <h1>

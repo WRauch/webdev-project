@@ -24,7 +24,7 @@ const NavigationSidebar = (
      </Link> :
      <Link to="/login" className={`list-group-item
      ${active === 'login'?'active':''}`}> 
-          Login
+          Login/Register
       </Link>
     }
 
