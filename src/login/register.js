@@ -41,8 +41,6 @@ function Register () {
                     <Link to="/login" className="btn bg-primary float-end">Login</Link>
 
                 </div>
-
-
             </div>
             <div className="col-1">
             <button className="btn bg-danger" onClick={register}>
@@ -50,10 +48,6 @@ function Register () {
                 </button>
                 
             </div>
-
-
-
-
         </div>
         </div>
 
