@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter} from "react-router-dom";
+import {HashRouter} from "react-router-dom";
 import {Routes, Route} from "react-router";
 import Home from './home';
 import Search from './search';
@@ -18,7 +18,7 @@ function App() {
 
       <Provider store={store}>
         <CurrentUserContext>
-        <BrowserRouter>
+        <HashRouter>
         <Routes>
           <Route index
                  element={<Home/>}/>
@@ -37,7 +37,7 @@ function App() {
                 element={<Search/>}
               />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </CurrentUserContext>
       </Provider>
       </div>
