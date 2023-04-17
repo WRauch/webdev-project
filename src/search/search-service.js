@@ -1,9 +1,7 @@
 import axios from 'axios';
-import {createAsyncThunk}
-  from "@reduxjs/toolkit"
 
-export const findScheduleToday = async (link) => {
+export const findTeams = async (link) => {
     const response = await axios.get(link);
-    const data = response.data.dates;
+    const data = response.data.teams;
     return data;
 }

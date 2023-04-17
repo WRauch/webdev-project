@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from "react";
 import NavigationSidebar from "../navbar";
-import { findScheduleToday } from "./search-service";
-import { json } from "react-router";
+import { findTeams } from "./search-service";
+import { json, Navigate } from "react-router";
 import {useDispatch, useSelector}
   from "react-redux";
+  import { Link, useNavigate, useParams } from "react-router-dom";
+
 function Search () {
-    let[search, setSearch] = useState('')
+    const { searchTerm } = useParams();
+    const navigate = useNavigate();
+    let[search, setSearch] = useState(searchTerm)
     let[results, setResults] = useState([])
 
-    const searchNHL = async (link) => {
-        const res = await findScheduleToday(link)
+    const searchNHL = async () => {
+        const res = await findTeams('https://statsapi.web.nhl.com/api/v1/teams');
         setResults(res);
-    }
+        navigate(`/search/${search}`);
+    };
     useEffect(() => {
-        searchNHL('https://statsapi.web.nhl.com/api/v1/players')    }, [])
+        if(searchTerm) {
+            setSearch(searchTerm);
+            searchNHL();
+        }
+    }, [])
 
     return(
         <div className="m-2">
-
 
         <div className="row">
             <div className="col-2">
@@ -26,20 +34,24 @@ function Search () {
         
             <div className="col-10">
                 <h2>
-                    Search For Players
+                    Search For Teams
                 </h2>
-                <input className="form-control" placeholder="Search" onChange={(x) => setSearch(x.target.value)}>
-                </input>
-                <button className="btn bg-danger">Search</button>
-                <ul className="list-group">
-                    {
-                        results.map(res => {
-                            <li>
-                                {res}
-                            </li>
-                        })
+                <button className="btn bg-danger" onClick={searchNHL}>Search</button>
+
+                <input className="form-control" placeholder="Search" onChange={(x) => setSearch(x.target.value)}/>
+                
+                <ul className="list-group mt-2">
+                {results.map((result) => {
+                  return (
+                    <>
+                    {(result.name).toLowerCase().includes(search.toLowerCase()) &&
+                        <li className="list-group-item">
+                        {result.name} <Link to={`/details/${result.id}`} className="float-end"> details</Link>
+                        </li>
                     }
-                    
+                    </>
+                  );
+                })}
 
                 </ul>
 
@@ -47,9 +59,6 @@ function Search () {
             </div>
 
             {JSON.stringify(results)}
-
-            
-
 
         </div>
         </div>

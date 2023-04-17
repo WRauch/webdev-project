@@ -4,10 +4,12 @@ const GameComponent = ({game} ) => {
         <li className="list-group-item">
             <div className="row">
                 <div className="col-6">
-                    <h4>{game.away}</h4>
+
+                    <h4> {game.teams.away.team.name} 
+                    </h4>
                 </div>
                 <div className="col-6">
-                    <h4>{game.home}</h4>
+                    <h4>{game.teams.home.team.name}</h4>
                 </div>
             </div>
         </li>
