@@ -7,6 +7,7 @@ import Profile from './profile';
 import Login from './login';
 import Register from './login/register';
 import Details from './details';
+import Admin from './admin';
 import store from './redux/store';
 import { Provider } from "react-redux";
 
@@ -24,10 +25,14 @@ function App() {
                  element={<Home/>}/>
           <Route path='search'
                  element={<Search/>}/>
-          <Route path='profile/*'
+          <Route path='profile'
+                 element={<Profile/>}/>
+          <Route path='profile/:username'
                  element={<Profile/>}/>
           <Route path='login'
                  element={<Login/>}/>   
+          <Route path='admin'
+                 element={<Admin/>}/>   
           <Route path='register'
                  element={<Register/>}/>
           <Route path='details/:teamId'

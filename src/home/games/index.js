@@ -6,11 +6,11 @@ const GamesList = ({games}) => {
     return (
         <ul className="list-group">
             <div className="row">
-                <div className="col-6">
+                <div className="col-6 text-primary">
                     <h4> Away
                     </h4>
                 </div>
-                <div className="col-6">
+                <div className="col-6 text-danger">
                     <h4>Home</h4>
                 </div>
             </div>
@@ -19,6 +19,8 @@ const GamesList = ({games}) => {
             <GameComponent game={game}/> )
         }
       </ul>
+
+      
 
     );
 

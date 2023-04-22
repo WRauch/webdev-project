@@ -2,9 +2,10 @@ import React, {useState} from "react";
 import NavigationSidebar from "../navbar";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { loginThunk } from "../redux/users-thunks";
+import { useDispatch, useSelector } from "react-redux";
+import { loginThunk, logoutThunk } from "../redux/users-thunks";
 function Login () {
+    const { currentUser } = useSelector((state) => state.users);
     const [user, setUser] = useState({
         username: "",
         password: "",
@@ -19,6 +20,9 @@ function Login () {
             alert("hello");
           }
       };
+      const logout = async () => {
+        await dispatch(logoutThunk());
+      };
     return(
         <div className="m-2">
 
@@ -27,7 +31,10 @@ function Login () {
             <div className="col-2">
             <NavigationSidebar active="login"/>
             </div>
+
+
         
+            {currentUser ? <h2 className="col-6"> You Are Logged In</h2> :
             <div className="col-6">
                 <input className="form-control" 
                 placeholder="Username" 
@@ -43,10 +50,14 @@ function Login () {
                 </div>
 
             </div>
+}
             <div className="col-1">
-            <button className="btn bg-danger" onClick={login}>
+                {currentUser ?          <button className="btn bg-danger" onClick={logout}>
+                    Logout
+                </button>:             <button className="btn bg-danger" onClick={login}>
                     Login
-                </button>
+                </button>}
+
             </div>
 
         </div>

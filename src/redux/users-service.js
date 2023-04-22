@@ -54,3 +54,8 @@ export const findUserByUsername = async (username) => {
   const response = await api.get(`${USERS_REST_API_URL}/username/${username}`);
   return response.data;
 };
+
+export const getUserFollowers = async (userId) => {
+  const response = await api.get(`${USERS_REST_API_URL}/${userId}/follows`);
+  return response.data;
+};

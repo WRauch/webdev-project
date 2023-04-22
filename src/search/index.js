@@ -9,7 +9,7 @@ import {useDispatch, useSelector}
 function Search () {
     const { searchTerm } = useParams();
     const navigate = useNavigate();
-    let[search, setSearch] = useState(searchTerm)
+    let[search, setSearch] = useState(searchTerm ? searchTerm : '')
     let[results, setResults] = useState([])
 
     const searchNHL = async () => {
@@ -33,9 +33,9 @@ function Search () {
             </div>
         
             <div className="col-10">
-                <h2>
+                <h1>
                     Search For Teams
-                </h2>
+                </h1>
 
                 <div className="input-group">
                     <input className="form-control" placeholder="Search" onChange={(x) => setSearch(x.target.value)}/>
@@ -56,12 +56,7 @@ function Search () {
                 })}
 
                 </ul>
-
-                
             </div>
-
-            {JSON.stringify(results)}
-
         </div>
         </div>
 

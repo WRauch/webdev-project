@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const NavigationSidebar = (
  {
-   active = 'explore'
+   active = ''
  }
 ) => {
   const { currentUser } = useSelector((state) => state.users);
@@ -25,6 +25,13 @@ const NavigationSidebar = (
      <Link to="/login" className={`list-group-item
      ${active === 'login'?'active':''}`}> 
           Login/Register
+      </Link>
+    }
+    {
+    currentUser && currentUser.isAdmin && 
+     <Link to="/admin" className={`list-group-item
+     ${active === 'admin'?'active':''}`}> 
+          Admin
       </Link>
     }
 
